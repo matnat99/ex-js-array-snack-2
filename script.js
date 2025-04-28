@@ -57,4 +57,31 @@ Stampa in console ogni titolo nella console.
 const longBooks = books.filter((b) => b.pages > 300);
 
 const longBooksTitles = longBooks.map((l) => l.title);
-console.log(longBooksTitles);
+
+longBooksTitles.forEach((t) => console.log(t));
+
+/*
+Snack 2 - Il primo libro scontato
+
+Creare un array (availableBooks) che contiene tutti i libri disponibili.
+Crea un array (discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20% (mantieni lo stesso formato e arrotonda al centesimo)
+Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi).
+*/
+
+const availableBooks = books.filter((b) => b.available);
+
+const discountedBooks = availableBooks.map((b) => {
+  const price = parseFloat(b.price.replace("€", ""));
+  const discountedPrice = price * (0.8).toFixed(2);
+  return {
+    ...b,
+    price: `${discountedPrice}€`,
+  };
+});
+
+const fullPricedBook = discountedBooks.find((b) => {
+  const price = parseFloat(b.price.replace("€", ""));
+  return price % 1 === 0;
+});
+
+console.log(fullPricedBook);
