@@ -108,3 +108,19 @@ authors.sort((a, b) => {
 });
 
 console.log(authors);
+
+/*
+Snack 4 - Calcola l'età media
+
+Creare un array (ages) che contiene le età di tutti gli autori dei libri.
+Calcola la somma delle età (agesSum) usando reduce.
+Stampa in console l'età media degli autori dei libri.
+*/
+
+const ages = books.map((b) => b.author.age);
+
+const agesSum = ages.reduce((acc, age) => acc + age, 0);
+
+const averageAge = agesSum / ages.length;
+
+console.log(averageAge);
